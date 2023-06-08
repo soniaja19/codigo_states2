@@ -1,5 +1,9 @@
 import 'package:codigo_states2/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'pages/provider/example_provider.dart';
+import 'pages/provider/person_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "Provider App",
-      home: HomePage(),
+    return MultiProvider(
+      providers: [
+        //Registrar a los providers usados en el App
+        ChangeNotifierProvider(create: (context) => PersonProvider()),
+        ChangeNotifierProvider(create: (context) => ExampleProvider()),
+      ],
+      child: MaterialApp(
+        title: "Provider App",
+        home: HomePage(),
+      ),
     );
   }
 }
