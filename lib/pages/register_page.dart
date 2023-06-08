@@ -1,4 +1,5 @@
 import 'package:codigo_states2/pages/provider/example_provider.dart';
+import 'package:codigo_states2/pages/provider/person_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,9 +24,9 @@ class RegisterPage extends StatelessWidget {
                 // exampleProvider.cambiarContador(10);
 
                 //Aquì se agregar el boton con los cambios
-                ExampleProvider exampleProvider =
-                    Provider.of<ExampleProvider>(context, listen: false);
-                exampleProvider.agregarContador();
+                // ExampleProvider exampleProvider =
+                //     Provider.of<ExampleProvider>(context, listen: false);
+                // exampleProvider.agregarContador();
 
                 //segunda opciòn para ejecutar un tipo de acciòn
                 // Provider.of<ExampleProvider>(context, listen: false)
@@ -33,6 +34,10 @@ class RegisterPage extends StatelessWidget {
 
                 //tercera opciòn para ejecutar un tipo de acciòn
                 //context.read<ExampleProvider>().agregarContador();
+
+                PersonProvider personProvider =
+                    Provider.of<PersonProvider>(context, listen: false);
+                personProvider.agregarPersona("Juan Montes Tapia");
               },
               child: const Text(
                 "Register",
