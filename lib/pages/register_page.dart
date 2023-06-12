@@ -1,5 +1,5 @@
-import 'package:codigo_states2/pages/provider/example_provider.dart';
 import 'package:codigo_states2/pages/provider/person_provider.dart';
+import 'package:codigo_states2/pages/provider/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,24 +48,30 @@ class RegisterPage extends StatelessWidget {
             //),
 
             //En este còdigo oye los cambios y dibuja los wigets solicitados
-            Consumer<ExampleProvider>(
+            // Consumer<ExampleProvider>(
+            //   builder: (context, provider, _) {
+            //     return Text(
+            //       provider.contador.toString(),
+            //       style: const TextStyle(
+            //         fontSize: 30.0,
+            //       ),
+            //     );
+            //   },
+            // ),
+            // Consumer<ExampleProvider>(
+            //   builder: (context, provider, _) {
+            //     return Text(
+            //       provider.contador.toString(),
+            //       style: const TextStyle(
+            //         fontSize: 30.0,
+            //       ),
+            //     );
+            //   },
+            // ),
+
+            Consumer<PostProvider>(
               builder: (context, provider, _) {
-                return Text(
-                  provider.contador.toString(),
-                  style: const TextStyle(
-                    fontSize: 30.0,
-                  ),
-                );
-              },
-            ),
-            Consumer<ExampleProvider>(
-              builder: (context, provider, _) {
-                return Text(
-                  provider.contador.toString(),
-                  style: const TextStyle(
-                    fontSize: 30.0,
-                  ),
-                );
+                return Text(provider.posts.toString());
               },
             ),
           ],

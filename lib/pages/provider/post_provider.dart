@@ -10,7 +10,7 @@ class PostProvider extends ChangeNotifier {
     return await apiService.getPosts();
   }
 
-  getPosts2() async {
+  Future<void> getPosts2() async {
     posts = await apiService.getPosts();
     notifyListeners();
   }

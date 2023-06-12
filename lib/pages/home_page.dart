@@ -1,5 +1,3 @@
-import 'package:codigo_states2/pages/provider/example_provider.dart';
-import 'package:codigo_states2/pages/provider/person_provider.dart';
 import 'package:codigo_states2/pages/provider/post_provider.dart';
 import 'package:codigo_states2/pages/register_page.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +8,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     //Se utiliza para crear Provider, la màs utilizada
     //el listen: false es para que no notifique a la pantalla home page no este oyendo el cambio
-    ExampleProvider exampleProvider =
-        Provider.of<ExampleProvider>(context, listen: false);
-
-    PersonProvider personProvider =
-        Provider.of<PersonProvider>(context, listen: false);
 
     PostProvider postProvider =
-        Provider.of<PostProvider>(context, listen: true);
+        Provider.of<PostProvider>(context, listen: false);
+    postProvider.getPosts2();
 
     return Scaffold(
       appBar: AppBar(
@@ -43,18 +37,23 @@ class HomePage extends StatelessWidget {
       //         subtitle: const Text("Descripción de items"),
       //       );
       //     }),
-
-      body: FutureBuilder(
-        future: postProvider.getPosts(),
-        builder: (context, snap) {
-          if (snap.hasData) {
-            return Text(snap.data.toString());
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+      body: Consumer<PostProvider>(
+        builder: (context, provider, _) {
+          return Text(provider.posts.toString());
         },
       ),
+
+      // body: FutureBuilder(
+      //   future: postProvider.getPosts(),
+      //   builder: (context, snap) {
+      //     if (snap.hasData) {
+      //       return Text(snap.data.toString());
+      //     }
+      //     return const Center(
+      //       child: CircularProgressIndicator(),
+      //     );
+      //   },
+      // ),
 
       // body: Consumer<PersonProvider>(
       //   builder: (context, provider, _) {
