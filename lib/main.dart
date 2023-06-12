@@ -1,4 +1,5 @@
 import 'package:codigo_states2/pages/home_page.dart';
+import 'package:codigo_states2/pages/provider/post_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         //Registrar a los providers usados en el App
         ChangeNotifierProvider(create: (context) => PersonProvider()),
         ChangeNotifierProvider(create: (context) => ExampleProvider()),
+        ChangeNotifierProvider(create: (context) => PostProvider()),
       ],
       child: MaterialApp(
         title: "Provider App",

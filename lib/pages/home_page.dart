@@ -1,5 +1,6 @@
 import 'package:codigo_states2/pages/provider/example_provider.dart';
 import 'package:codigo_states2/pages/provider/person_provider.dart';
+import 'package:codigo_states2/pages/provider/post_provider.dart';
 import 'package:codigo_states2/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,9 @@ class HomePage extends StatelessWidget {
 
     PersonProvider personProvider =
         Provider.of<PersonProvider>(context, listen: false);
+
+    PostProvider postProvider =
+        Provider.of<PostProvider>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -40,19 +44,31 @@ class HomePage extends StatelessWidget {
       //       );
       //     }),
 
-      body: Consumer<PersonProvider>(
-        builder: (context, provider, _) {
-          return ListView.builder(
-            itemCount: personProvider.people.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(personProvider.people[index]),
-                subtitle: const Text("Descripción de items"),
-              );
-            },
+      body: FutureBuilder(
+        future: postProvider.getPosts(),
+        builder: (context, snap) {
+          if (snap.hasData) {
+            return Text(snap.data.toString());
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         },
       ),
+
+      // body: Consumer<PersonProvider>(
+      //   builder: (context, provider, _) {
+      //     return ListView.builder(
+      //       itemCount: personProvider.people.length,
+      //       itemBuilder: (context, index) {
+      //         return ListTile(
+      //           title: Text(personProvider.people[index]),
+      //           subtitle: const Text("Descripción de items"),
+      //         );
+      //       },
+      //     );
+      //   },
+      // ),
     );
   }
 }
