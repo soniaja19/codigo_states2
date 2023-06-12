@@ -13,12 +13,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    //Se utiliza para crear Provider, la màs utilizada
-    //el listen: false es para que no notifique a la pantalla home page no este oyendo el cambio
-    // este còdigo es muy usado
-    PostProvider postProvider =
-        Provider.of<PostProvider>(context, listen: false);
-    postProvider.getPosts2();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      //Se utiliza para crear Provider, la màs utilizada
+      //el listen: false es para que no notifique a la pantalla home page no este oyendo el cambio
+      // este còdigo es muy usado
+      PostProvider postProvider =
+          Provider.of<PostProvider>(context, listen: false);
+      postProvider.getPosts2();
+    });
   }
 
   @override
@@ -54,7 +56,17 @@ class _HomePageState extends State<HomePage> {
               child: CircularProgressIndicator(),
             );
           }
-          return Text(provider.posts.toString());
+
+          //para consumo de servicio desde Privider
+          return ListView.builder(
+            itemCount: provider.posts.length,
+            itemBuilder: ((context, index) {
+              return ListTile(
+                title: Text(provider.posts[index]["title"]),
+                subtitle: Text(provider.posts[index]["body"]),
+              );
+            }),
+          );
         },
       ),
 
