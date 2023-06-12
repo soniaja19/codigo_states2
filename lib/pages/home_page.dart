@@ -3,16 +3,26 @@ import 'package:codigo_states2/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+
     //Se utiliza para crear Provider, la màs utilizada
     //el listen: false es para que no notifique a la pantalla home page no este oyendo el cambio
-
+    // este còdigo es muy usado
     PostProvider postProvider =
         Provider.of<PostProvider>(context, listen: false);
     postProvider.getPosts2();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -39,6 +49,11 @@ class HomePage extends StatelessWidget {
       //     }),
       body: Consumer<PostProvider>(
         builder: (context, provider, _) {
+          if (provider.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           return Text(provider.posts.toString());
         },
       ),

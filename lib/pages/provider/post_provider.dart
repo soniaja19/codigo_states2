@@ -6,12 +6,17 @@ class PostProvider extends ChangeNotifier {
 
   List posts = [];
 
+  bool isLoading = false;
+
   Future<List> getPosts() async {
     return await apiService.getPosts();
   }
 
   Future<void> getPosts2() async {
+    isLoading = true;
+    notifyListeners();
     posts = await apiService.getPosts();
+    isLoading = false;
     notifyListeners();
   }
 }
