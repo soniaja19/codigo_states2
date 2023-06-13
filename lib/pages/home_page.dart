@@ -117,6 +117,27 @@ class _HomePageState extends State<HomePage> {
               return ListTile(
                 title: Text(provider.notes[index]["title"]),
                 subtitle: Text(provider.notes[index]["description"]),
+                trailing: Column(
+                  children: [
+                    Icon(
+                      Icons.check_circle,
+                      color: provider.notes[index]["status"]
+                          ? Colors.greenAccent
+                          : Colors.black12,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        provider.updateNote(provider.notes[index]["id"]);
+                      },
+                      child: const Text(
+                        "Completar",
+                      ),
+                    ),
+                  ],
+                ),
               );
             }),
           );
