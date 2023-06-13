@@ -1,3 +1,4 @@
+import 'package:codigo_states2/pages/provider/notes_provider.dart';
 import 'package:codigo_states2/pages/provider/post_provider.dart';
 import 'package:codigo_states2/pages/register_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,10 @@ class _HomePageState extends State<HomePage> {
       PostProvider postProvider =
           Provider.of<PostProvider>(context, listen: false);
       postProvider.getPosts2();
+
+      NoteProvider noteProvider =
+          Provider.of<NoteProvider>(context, listen: false);
+      noteProvider.getNotes();
     });
   }
 
@@ -49,26 +54,27 @@ class _HomePageState extends State<HomePage> {
       //         subtitle: const Text("Descripción de items"),
       //       );
       //     }),
-      body: Consumer<PostProvider>(
-        builder: (context, provider, _) {
-          if (provider.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
 
-          //para consumo de servicio desde Privider
-          return ListView.builder(
-            itemCount: provider.posts.length,
-            itemBuilder: ((context, index) {
-              return ListTile(
-                title: Text(provider.posts[index]["title"]),
-                subtitle: Text(provider.posts[index]["body"]),
-              );
-            }),
-          );
-        },
-      ),
+      // body: Consumer<PostProvider>(
+      //   builder: (context, provider, _) {
+      //     if (provider.isLoading) {
+      //       return const Center(
+      //         child: CircularProgressIndicator(),
+      //       );
+      //     }
+
+      //     //para consumo de servicio desde Privider
+      //     return ListView.builder(
+      //       itemCount: provider.posts.length,
+      //       itemBuilder: ((context, index) {
+      //         return ListTile(
+      //           title: Text(provider.posts[index]["title"]),
+      //           subtitle: Text(provider.posts[index]["body"]),
+      //         );
+      //       }),
+      //     );
+      //   },
+      // ),
 
       // body: FutureBuilder(
       //   future: postProvider.getPosts(),
@@ -95,6 +101,27 @@ class _HomePageState extends State<HomePage> {
       //     );
       //   },
       // ),
+
+      body: Consumer<NoteProvider>(
+        builder: (context, provider, _) {
+          // if (provider.isLoading) {
+          //   return const Center(
+          //     child: CircularProgressIndicator(),
+          //   );
+          // }
+
+          //para consumo de servicio desde Privider
+          return ListView.builder(
+            itemCount: provider.notes.length,
+            itemBuilder: ((context, index) {
+              return ListTile(
+                title: Text(provider.notes[index]["title"]),
+                subtitle: Text(provider.notes[index]["description"]),
+              );
+            }),
+          );
+        },
+      ),
     );
   }
 }

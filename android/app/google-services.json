@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1075147801960",
+    "project_id": "my-project-12ee7",
+    "storage_bucket": "my-project-12ee7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075147801960:android:9e14e75354fa03593742dd",
+        "android_client_info": {
+          "package_name": "com.example.codigo_states2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075147801960-21nnnn1erbj75e25833falc3671sgg2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn4ajU_af9qxi8eGU-PuDNOdExQ-1ABPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075147801960-21nnnn1erbj75e25833falc3671sgg2s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1075147801960-7i8tjgfmf6cuut5jqvl7tlk6sgc9s0iu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pe.codigo.shoesapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075147801960:android:0b0e28043e89ecb63742dd",
+        "android_client_info": {
+          "package_name": "pe.aurorastudio.shoesappclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075147801960-7m1omqb080su70ktgs7arhuf3uqec1u0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.aurorastudio.shoesappclient",
+            "certificate_hash": "ba6bcd35e05b1f07cd29a07338853b0014cb7866"
+          }
+        },
+        {
+          "client_id": "1075147801960-21nnnn1erbj75e25833falc3671sgg2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn4ajU_af9qxi8eGU-PuDNOdExQ-1ABPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075147801960-21nnnn1erbj75e25833falc3671sgg2s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1075147801960-7i8tjgfmf6cuut5jqvl7tlk6sgc9s0iu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pe.codigo.shoesapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
