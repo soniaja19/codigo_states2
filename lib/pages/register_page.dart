@@ -52,15 +52,30 @@ class _RegisterPageState extends State<RegisterPage> {
 
           //BlocBuilder esta pendiente de los estados de  CounterCubit, que es un int (entero)
           BlocBuilder<CounterCubit, CounterState>(
-              builder: (BuildContext context, CounterState state) {
-            //print("wwww $state");
-            return Text(
-              state.toString(),
-              style: const TextStyle(
-                fontSize: 40,
-              ),
-            );
-          }),
+            builder: (BuildContext context, CounterState state) {
+              //print("wwww $state");
+              switch (state.runtimeType) {
+                case CounterInit:
+                  int value = (state as CounterInit).data;
+                  return Text(
+                    value.toString(),
+                    style: const TextStyle(
+                      fontSize: 40,
+                    ),
+                  );
+                case IncrementState:
+                  int value = (state as IncrementState).data;
+                  return Text(
+                    value.toString(),
+                    style: const TextStyle(
+                      fontSize: 40,
+                    ),
+                  );
+                default:
+                  return const Center();
+              }
+            },
+          ),
           ElevatedButton(
             onPressed: () {
               //Aquì utilizò estoy utilizando el addCounter para incrementar

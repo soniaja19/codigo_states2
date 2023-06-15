@@ -23,11 +23,9 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterInit());
 
   increment() {
-    print(state);
+    //Aqui los estados cambian de acuerdo a los clic que hagamos en el boton increment
     if (state is CounterInit) {
       CounterInit current = state as CounterInit;
-      print(current.data);
-
       emit(IncrementState(current.data + 1));
     } else if (state is IncrementState) {
       // emit(IncrementState(state.));
