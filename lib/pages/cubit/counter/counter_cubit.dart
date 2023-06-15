@@ -35,10 +35,17 @@ class CounterCubit extends Cubit<CounterState> {
   }
 
   decrement() {
-    print("Decrement");
+    if (state is CounterInit) {
+      CounterInit current = state as CounterInit;
+      emit(DecrementState(current.data - 1));
+    } else if (state is IncrementState) {
+      // emit(IncrementState(state.));
+      DecrementState current = state as DecrementState;
+      emit(IncrementState(current.data - 1));
+    }
   }
+}
 
-  restar() {
-    print("Restar");
-  }
+restar() {
+  print("Restar");
 }

@@ -71,10 +71,27 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontSize: 40,
                     ),
                   );
+                case DecrementState:
+                  int value = (state as DecrementState).data;
+                  return Text(
+                    value.toString(),
+                    style: const TextStyle(
+                      fontSize: 40,
+                    ),
+                  );
                 default:
                   return const Center();
               }
             },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              //Aquì utilizò estoy utilizando el addCounter para incrementar
+              // registerBloc.addCounter(IncrementEvent(1));
+
+              context.read<CounterCubit>().increment();
+            },
+            child: const Text("Register"),
           ),
           ElevatedButton(
             onPressed: () {
